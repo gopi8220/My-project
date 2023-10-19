@@ -1,0 +1,60 @@
+<?php
+include 'connect.php';
+if(isset($_post[submit]))
+{
+$name=$_post['name'];
+$email=$_post['email'];
+$mobile=$_post['mobile'];
+$password=$_post['password'];
+$sql=insert into crud(name,email,mobile,password)
+values('$name','$email','$mobile','$password');
+$result=mysqli_query($con,$sql);
+if($result)
+{
+echo "Data Inserted succusfully";
+}
+else
+{
+die(mysqli_error($con));
+}
+}
+?>
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" 
+    <title>crud opertion</title>
+  </head>
+  <body>
+    <div class="container">
+	<form method="post">
+  <div class="form-group">
+    <label>Ename</label>
+    <input type="text" class="form-control" 
+	placeholder="enter your name";name="name" autocomplete="off">
+	<div class="form-group">
+    <label>Email</label>
+    <input type="text" class="form-control" 
+	placeholder="enter your email";name="email" autocomplete="off">
+   </div>
+   <div class="mb-3">
+    <label>mobile</label>
+    <input type="text" class="form-control" 
+	placeholder="enter your mobile number";name="mobile" autocomplete="off">
+	</div>
+	<div class="mb-3">
+    <label>password</label>
+    <input type="text" class="form-control" 
+	placeholder="enter your password";name="password" autocomplete="off">
+	<button type="submit" class="btn
+	btn-primary"name="submit">submit</button>
+</form>
+	</div>
+  </body>
+</html>

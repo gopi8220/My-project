@@ -1,0 +1,44 @@
+<?php
+include 'connect.php';
+if(isset($_post[submit]))
+{
+$id=$_post['id'];
+$firstname=$_post['firstname'];
+$lastname=$_post['lastname'];
+$email=$_post['email'];
+$sql="insert into hello (id,firstname,lastname,email)
+values('$id','$firstname','$lastname','$email')";
+$result=mysqli_query($con,$sql);
+if($result)
+{
+echo "Data Inserted succusfully";
+}
+else
+{
+echo "Data unstored";
+die(mysqli_error($con));
+}
+}
+?>
+<html>
+<head>
+<title>Tuter joes</title>
+</head>
+<body><br>
+<bgcolor="red"><h1>insert page</h1> <align="center">
+<form method="post">
+       <table align="center" border=1px>
+				<tr><td>id</td><td><input type="text" name="id"></tr></td>
+				<tr><td>firstname</td><td><input type="text" name="firstname"></tr></td>
+				<tr><td>lastname</td><td><input type="text" name="lastname"></tr></td>
+				<tr><td>email</td><td><input type="text" name="email"></tr></td>
+				<tr>
+					<td colspan='2' align="center">
+						<input type="submit" Name="submit" value ="save Datas">
+					</td>
+				</tr>
+		</table>
+</form>
+</body>
+</head>
+</html>

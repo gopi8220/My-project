@@ -1,0 +1,50 @@
+<?php
+$con=new mysqli('localhost','root','','tutorial');
+if($con->connect_error)
+{
+	echo $con->connect_error;
+	die();
+}
+?>
+<html>
+<head>
+<title>Tuter joes</title>
+</head>
+<body>
+<form action="insert.php" method="post">
+       <table>
+				<tr><td>Name</td><td><input type="text" name="name"></tr></td>
+				<tr><td>Age</td><td><input type="text" name="age"></tr></td>
+				<tr>
+					<td colspan='2' align="center">
+						<input type="submit" Name="sumbit" value ="save Datas">
+					</td>
+				</tr>
+		</table>
+</form>
+<?php
+if(isset($_POST['submit']))
+{
+	$name=$_POST('name');
+	$age=$_POST('age');
+	if($name!=""&&$age!="")
+	{
+	$sql="INSERT INTO users(uname,uage) VALUES('$name','$age')";
+	if($con->query($sql))
+	{
+		echo "Data Stored";
+	}
+	else
+	{
+		echo "Insert Data fails";
+	}
+	}
+	else
+	{
+		echo "all Fields required";
+	}
+}
+
+?>
+</body>
+</html>
